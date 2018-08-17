@@ -8,10 +8,8 @@ header-strong: Roboto Strong,#005DAE
 header-emphasis: Reklame Script, #53585F  
 code: Fira Code Medium, #EE783F, #8B3D90, #2E59A2, #DF393F, #1EA8D9
 background-color: #FFFFFF  
-table-separator-color: #DDDEE0
 footer: August 2018 | Copyright Ⓒ Eric Jiang/Monash University 2018 | Adapated from "Gitting Started at Hackathons" tech talk
 slidenumbers: false
-
 ## Introduction to Git and the MonPlan Development Workflow
 
 ### Eric Jiang (@lorderikir)
@@ -52,6 +50,35 @@ _But what if there was a way that I good remember how the code look liked throug
 
 ---
 
+# Some Terminology
+
+## **Repository** 
+> The Git repository is stored in the same directory as the project itself, in a subdirectory called .git. Note differences from central-repository systems like CVS or Subversion:
+
+* There is only one .git directory, in the root directory of the project.
+* The repository is stored in files alongside the project. There is no central server repository.
+
+![original](assets/background.png)
+
+---
+# Some Terminology
+
+## **Branches** 
+> A branch in Git is simply a lightweight movable pointer to one of these commits. The default branch name in Git is master
+
+![inline](https://git-scm.com/figures/18333fig0304-tn.png)
+
+![original](assets/background.png)
+
+---
+
+# Git File Lifecycle
+
+![inline](https://git-scm.com/figures/18333fig0201-tn.png)
+
+![original](assets/background.png)
+
+---
 # Some Basic Commands
 
 | Command      | Description                            |
@@ -73,7 +100,8 @@ Well, working with teams 👪 may be hard. There are generally two ways you can 
 * Using Forks
 
 We use branches at MonPlan!
-## ![original](assets/background.png)
+
+![original](assets/background.png)
 
 ---
 
@@ -252,6 +280,150 @@ _Unfortunately we won't go into fixing merge conflicts in this talk_
 
 ---
 
+![inline](http://i.bittwiddlers.org/LD6.jpg)
+
+
+![original](assets/background.png)
+
+---
+# Here's one of the best and easiest ways to resolve a conflict
+
+1. We go to the target branch and pull down the latest changes
+2. We then 'checkout' our current working branch and create a new branch off the working branch 
+3. We then attempt to merge our target branch into our new branch
+4. Resolve Conflicts (by choosing the right pieces of code you want), VSCode makes this really easier
+5. Merge the new branch into our current branch
+6. Merge the current branch into the target branch
+
+![original](assets/background.png)
+
+---
+
+## Got it? 🤷‍♂️
+
+### It's probably easier if I show you commands
+
+### Let's Imagine we are merging a feature from `feature/awesome-feature` branch into `develop`
+
+![original](assets/background.png)
+
+---
+
+# This is the current state of the branches
+
+![inline](https://i.imgur.com/7ou081C.png)
+
+![original](assets/background.png)
+
+---
+We go to the target branch and pull down the latest changes
+
+[.code-highlight: 1,2]
+```
+git checkout develop
+git pull
+git checkout feature/awesome-feature
+git checkout mergconf/feat-develop
+# ...
+```
+
+![inline](https://i.imgur.com/jD0ioV9.png)
+
+![original](assets/background.png)
+
+---
+We then 'checkout' our current working branch and create a new branch off the working branch 
+
+[.code-highlight: 3]
+```
+git pull
+git checkout feature/awesome-feature
+git checkout mergconf/feat-develop
+git merge develop
+# ...
+```
+
+![inline](https://i.imgur.com/s1rWJu4.png)
+
+![original](assets/background.png)
+
+---
+
+We then attempt to merge our target branch into our new branch
+
+[.code-highlight: 3]
+```
+git pull
+git checkout feature/awesome-feature
+git checkout mergconf/feat-develop
+git merge develop
+# ...
+```
+![inline](https://i.imgur.com/BN2poNJ.png)
+
+![original](assets/background.png)
+
+---
+
+Resolve Conflicts (by choosing the right pieces of code you want), VSCode makes this really easier
+
+![inline](https://code.visualstudio.com/assets/docs/editor/versioncontrol/merge-conflict.png)
+
+Stage and commit changes 
+```
+git add .
+git commit -m "resolved merge issues"
+```
+
+![original](assets/background.png)
+
+---
+
+Here's how the state of the branches are:
+
+![inline](https://i.imgur.com/qDC4szs.png)
+
+![original](assets/background.png)
+
+---
+
+Merge the new branch into our current branch
+
+
+[.code-highlight: 1,2]
+```
+git checkout feature/awesome-feature #get to current working branch
+git merge mergconf/feat-develop
+git push # push to repo
+```
+
+![inline](https://i.imgur.com/a8TmzRe.png)
+
+![original](assets/background.png)
+
+---
+
+Push changes to repository
+
+[.code-highlight: 3]
+```
+git checkout feature/awesome-feature #get to current working branch
+git merge mergconf/feat-develop
+git push # push to repo
+```
+
+![inline](https://i.imgur.com/Prsy165.png)
+
+
+![original](assets/background.png)
+
+---
+
+# Our Conflicts would have been solved now! 🎆
+
+![original](assets/background.png)
+
+---
 # Questions? <br/><br/> 🤔 🎤 📣
 
 ![original](assets/background.png)
